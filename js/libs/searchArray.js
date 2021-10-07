@@ -11,6 +11,8 @@ function searchArrayName(array, filterName) {
 }
     return array;
 }
+
+
 function searchArrayPrice(array, filterPrice) {
     if (filterPrice !== "") {
         let filteredArray = array.filter(function(object) {
@@ -19,10 +21,14 @@ function searchArrayPrice(array, filterPrice) {
     array = filteredArray;
 }
 return array;
+
 }
+
 const searchArray = function(array, filterStrings) {
-    array = searchArrayName(array, filterStrings.name);
-    array = searchArrayPrice(array, filterStrings.price);
-    return array;
+    let filteredArray = array;
+    filteredArray = searchArrayName(filteredArray, filterStrings.name);
+    filteredArray = searchArrayPrice(filteredArray, filterStrings.price);
+    return filteredArray;
 }
+
 export default searchArray;
