@@ -23,7 +23,7 @@ function renderToHtml(array, filterStrings = false) {
 				faClass = "far fas";
 			}
 			cardsContainer.innerHTML += `
-            <div class="col">
+            <div class="col card__outer" data-id="${object.id}">
                 <article class="card h-100">
                     <img src="${object.image}" class="card-img-top img-fluid" alt="${object.title}" width="500" height="500">
                     <div class="card-body">
@@ -35,10 +35,17 @@ function renderToHtml(array, filterStrings = false) {
             </div>`;
 		}
 	} else {
+		if (document.title === "Home") {
 		cardsContainer.innerHTML = `
         <div class="col">
             <h3 style="color: gray">No results found</h3>
         </div>`;
+	} else if (document.title === "Favourites") {
+		cardsContainer.innerHTML = `
+		<div class="col">
+			<h3 style="color: blue">You don't have any favourites :(</h3>
+		</div>`
+	}
 	}
 }
 

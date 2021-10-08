@@ -10,6 +10,7 @@ let productsArray = data;
 if (document.title === "Favourites") {
 	productsArray = getFromStorage("favourites");
 }
+function renderThePage() {
 if (typeof productsArray !== "undefined") {
 	if (document.title === "Home") {
 		for (let input of inputs) {
@@ -47,7 +48,13 @@ if (typeof productsArray !== "undefined") {
 	for (let element of icons) {
 		element.addEventListener("click", (e) => {
 			storageHandler(element);
-			renderToHtml(productsArray);
+			if (document.title === "Favourites") {
+				productsArray = getFromStorage("favourites");
+				renderThePage();
+			}
 		});
 	}
 }
+}
+renderThePage();
+
